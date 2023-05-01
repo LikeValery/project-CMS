@@ -1,0 +1,77 @@
+.main-nav {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.main-nav__button {
+	background-color: #ffffff;
+	border: 1px solid #9f7303;
+	border-radius: 4px;
+}
+
+.main-nav__item {
+	&::marker {
+		color: transparent;
+	}
+}
+
+&--nojs {
+	@media #{$mobile-only} {
+		--toggle-visibility: collapse;
+		--nav-position: static;
+	}
+}
+
+&--closed {
+	--toggle-icon: url("../../icons/stack.svg#triangle");
+
+	@media #{$mobile-only} {
+		--nav-visibility: collapse;
+	}
+}
+
+&--color-invert {
+	@media #{$desktop-only} {
+		--link-color: #ffffff;
+		--link-decor-color: currentColor;
+	}
+}
+
+.main-nav__toogle {
+	visibility: var(--toggle-visibility, collapse);
+	position: absolute;
+	display: block;
+	padding: 0;
+	top: -24px;
+	right: 14px;
+	border: none;
+	cursor: pointer;
+	background-color: #ffffff;
+	z-index: 3;
+
+	&::before {
+		content: "";
+		display: block;
+		width: 13px;
+		height: 9px;
+		background-color: #000000;
+		mask: var(--toggle-icon, url("../../icons/stack.svg#triangel")) no-repeat center / contain;
+	}
+}
+
+.main-nav__list {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	overflow: hidden;
+
+	@media #{$mobile-only} {
+		visibility: var(--nav-visibility, visible);
+		position: var(--nav-position, absolute);
+		z-index: 2;
+		width: 100%;
+		flex-direction: column;
+		text-align: left;
+		padding: 18px 16px;
+	}
+}
