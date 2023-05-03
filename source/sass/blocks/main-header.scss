@@ -1,27 +1,17 @@
 .main-header {
-	background-color: #ffffff;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	font-size: 18px;
-	line-height: 27px;
-	font-weight: 400;
-	padding: 10px 0 18px;
 	position: relative;
 	z-index: 3;
 
-	&--has-no-separator {
+	@media #{$not-mobile} {
 		--has-separator: none;
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 2em;
+		padding-block: 25px;
 	}
 
-	&::after {
-		content: var(--has-separator, "");
-		position: absolute;
-		right: 0;
-		bottom: -1px;
-		height: 1px;
-		width: 100vw;
-		background: #d9d9d9;
-		box-shadow: 100vw 0 0 0 #d9d9d9;
+	&--has-no-separator {
+		--has-separator: none;
 	}
 }
 
